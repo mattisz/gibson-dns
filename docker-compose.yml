@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  app:
+    image: mattisz/gibson-dns
+    build: .
+    init: true
+    environment:
+      - USER_ID=0
+      - GROUP_ID=0
+      - TZ=UTC
+      - DISPLAY_WIDTH=604
+      - DISPLAY_HEIGHT=472
+      - SECURE_CONNECTION=1
+    ports:
+      - 5800:5800
+    volumes:
+      - /var/lib/docker/data/gibson-dns/config:/config
+    restart: unless-stopped
